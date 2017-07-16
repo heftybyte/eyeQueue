@@ -1,0 +1,14 @@
+{
+  "name": "eyeQueue",
+  "app_id": "e6f180e9",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "scss/**/*"
+  ],
+  "type": "ionic1"
+}

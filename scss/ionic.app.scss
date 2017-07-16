@@ -1,0 +1,142 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+$light:                           #FFF !default;
+$stable:                          #F7F7F7 !default;
+$assertive:                       #EB474E !default;
+$dark:                            #444 !default;
+$secondaryTextColor:              #666;
+$borderColor:                     #DDD;
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "../www/lib/ionic/scss/ionic";
+
+a {
+  text-decoration: none;
+}
+// common class
+.pull-right {
+  float: right;
+}
+
+// list restaurant
+.item {
+  // rating overlay on image
+  .overlay-rating {
+    position: absolute;
+    top: 1.5em;
+    right: 1.5em;
+    font-weight: bold;
+    border-radius: 60px;
+    background-color: $assertive;
+    width: 2.5em;
+    height: 2.5em;
+    text-align: center;
+    padding-top: 0.55em;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+// view restaurant detail
+.static {
+  text-align: center;
+
+  .static-total, .static-label {
+    display: block;
+  }
+}
+
+.static-total {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.static-label {
+  font-size: 0.875em;
+  color: $secondaryTextColor;
+}
+
+// location view
+#map {
+  width: 100%;
+  height: 40%;
+  background: url('../img/map.png') 100% 100%;
+}
+
+.scroll {
+  height: 100%;
+}
+
+// search result
+.search-result {
+  .left-block {
+    display: inline-block;
+  }
+
+  .right-block {
+    text-decoration: none;
+  }
+}
+
+// profile page
+.profile-picture {
+  border-radius: 50%;
+  width: 100px;
+  margin: 30px auto 0;
+}
+
+// dark list style
+.dark-list {
+  .item {
+    background: $dark;
+    color: $stable;
+  }
+}
+
+// account page
+.account-bg {
+  background: url("../img/user-cover.jpg") 100% 100%;
+  padding-bottom: 10px;
+}
+
+// login page
+.social-button {
+  color: #FFF;
+  i {
+    font-size: 1.8em;
+    vertical-align: middle;
+    margin-left: 0.5em;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+}
+
+.facebook-login {
+  background: #3B5999;
+}
+
+.twitter-login {
+  background: #00ACEE;
+}

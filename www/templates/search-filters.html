@@ -1,0 +1,31 @@
+<ion-view view-title="Search filters" hide-back-button="false" class="stable-bg">
+  <ion-content>
+    <div class="padding">
+      <h4>Sort by</h4>
+      <div class="button-bar">
+        <a class="button button-small light-bg">Nearby</a>
+        <a class="button button-small">Rating</a>
+        <a class="button button-small">Comment</a>
+        <a class="button button-small">View</a>
+      </div>
+      <h4>Filter by</h4>
+      <div class="list">
+        <div class="item item-icon-right">
+          Area
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+        <div class="item item-icon-right">
+          Categories
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+        <div class="item item-icon-right">
+          Service
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </div>
+      </div>
+      <button class="button button-block button-balanced" ng-click="applyFilter()">
+        Save
+      </button>
+    </div>
+  </ion-content>
+</ion-view>
