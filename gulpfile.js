@@ -7,40 +7,127 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-//Connet to the database
+
+//Connect to the database
 mongoose.connect('mongodb://test:test@ds023603.mlab.com:23603/eyequeue');
 
-//Create schemas
+//Create schemas & models
 
-//User
-var userSchema = new mongoose.Schema({
-  id: String,
-  username:
-  password:
-  paymentMethods: {
-    type:
-    card_id:
+//User Schema
+var UserSchema = Schema({
+  id:Schema.Types.ObjectId,
+  username: {
+    type: Schema.Types.ObjectId,
+    ref: 'Username'
   },
-  phoneNumber:
-  email:
-  phoneNumberVerified: Boolean,
-  emailVerified: Boolean,
-  picture:
-  firstName:
-  lastName:
+  password: {
+    type: Schema.Types.ObjectId,
+    ref: 'Password'
+  },
+  paymentMethods: {
+    type: Schema.Types.ObjectId,
+    ref: 'PaymentMethods'
+  },
+  phoneNumber: {
+    type: Schema.Types.ObjectId,
+    ref: 'PhoneNumber'
+  },
+  email: {
+    type: Schema.Types.ObjectId,
+    ref: 'Email'
+  },
+  phoneNumberVerified: {
+    type: Schema.Types.ObjectId,
+    ref: 'PhoneNumber'
+  },
+  emailVerified: {
+    type: Schema.Types.ObjectId,
+    ref: 'EmailVerified'
+  },
+  picture: {
+    type: Schema.Types.ObjectId,
+    ref: 'Picture'
+  },
+  firstName: {
+    type: Schema.Types.ObjectId,
+    ref: 'FirstName'
+  },
+  lastName: {
+    type: Schema.Types.ObectId,
+    ref: 'LastName'
+  }
 });
 
-//Order
-var orderSchema = new mongoose.Schema({
+//User Model
+var User = new mongoose.model('User', userSchema);
   id: String,
-  mealId: String,
-  total: Float,
-  paymentMethodId: String,
-  userId: String
+  username: String,
+  password: String,
+  paymentMethods: {
+    type: String,
+    card_id: String
+  },
+  phoneNumber: String,
+  email: String,
+  phoneNumberVerified: Boolean,
+  emailVerified: Boolean,
+  picture: String,
+  firstName: String,
+  lastName: String
+});
+
+//Order Schema
+var orderSchema = Schema({
+	id: Schema.Types.ObjectId,
+ 	meal: {
+ 		type: Schema.Types.ObjectId,
+ 		ref: 'Meal'
+ 	},
+ 	total: Schema.Types.Number,
+ 	paymentMethod: {
+ 		type: Schema.Types.ObjectId,
+ 		ref: 'PaymentMethod'
+ 	},
+ 	user: {
+ 		type: Schema.Types.ObjectId,
+ 		ref: 'User'
+ 	}
 })
 
-//Meal
+//Order Model
+var Order = mongoose.model('Order', orderSchema);
+
+//Meal Schema
+var mealSchema = Schema({
+  id: Schema.Types.ObjectId,
+  picture: {
+    type: Schema.Types.ObjectId,
+    ref: 'Picture'
+  },
+  name: {
+    type: Schema.Types.ObjectId,
+    ref: 'Name'
+  },
+  description: {
+    type: Schema.Types.ObjectId,
+    ref: 'Description'
+  },
+  price: {
+    type: Schema.Types.ObjectId,
+    ref: 'Price'
+  },
+  prepTime: {
+    type: Schema.Types.ObjectId,
+    ref: 'PrepTime'
+  },
+  restaurantId: {
+    type: Schema.Types.ObjectId,
+    ref: 'RestaurantId'
+  },
+})
+//Meal Model
 var mealSchema = new mongoose.Schema({
   id: String,
   picture:
@@ -51,15 +138,49 @@ var mealSchema = new mongoose.Schema({
   restaurantId: String
 })
 
-//restaurantId
+
+//Restaurant Schema
+var restaurantSchema = Schema({
+  id: Schema.Types.ObjectId,
+  name: {
+    type: Schema.Types.ObjectId,
+    ref: 'Name'
+  },
+  phoneNumber: {
+    type: Schema.Types.ObjectId,
+    ref: 'PhoneNumber'
+  },
+  email: {
+    type: Schmea.Types.ObjectId,
+    ref: 'Email'
+  },
+  location: {
+    type: Schema.Types.ObjectId,
+    ref: 'Location'
+  },
+  formattedAddress: {
+    type: Schema.Types.ObjectId,
+    ref: 'FormattedAddress'
+  },
+  description: {
+    type: Schema.Types.ObjectId,
+    ref: 'Description'
+  },
+  priceRange: {
+    type: Schema.Types.ObjectId,
+    ref: 'PriceRange'
+  },
+})
+
+//restaurant model
 var restaurantSchema = new mongoose.Schema({
   id: String,
   name: String,
   phoneNumber: String,
   email: String,
   location: {
-    latitude: String,
-    longitude: String
+    latitude: Point,
+    longitude: Point
   },
   formattedAddress: String,
   description: String,
