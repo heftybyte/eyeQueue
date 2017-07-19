@@ -1,2 +1,2 @@
 # eyeQueue
-Lines just got better.
+Smarter lines.

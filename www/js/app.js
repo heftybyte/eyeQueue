@@ -1,4 +1,4 @@
-/* Autor: Duy Thanh Dao */
+/* Created at The Knowledge House */
 
 angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services'])
 

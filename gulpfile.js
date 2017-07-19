@@ -6,6 +6,65 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var mongoose = require('mongoose');
+
+//Connet to the database
+mongoose.connect('mongodb://test:test@ds023603.mlab.com:23603/eyequeue');
+
+//Create schemas
+
+//User
+var userSchema = new mongoose.Schema({
+  id: String,
+  username:
+  password:
+  paymentMethods: {
+    type:
+    card_id:
+  },
+  phoneNumber:
+  email:
+  phoneNumberVerified: Boolean,
+  emailVerified: Boolean,
+  picture:
+  firstName:
+  lastName:
+});
+
+//Order
+var orderSchema = new mongoose.Schema({
+  id: String,
+  mealId: String,
+  total: Float,
+  paymentMethodId: String,
+  userId: String
+})
+
+//Meal
+var mealSchema = new mongoose.Schema({
+  id: String,
+  picture:
+  name: String,
+  description: String,
+  price: Float,
+  prepTime: Int,
+  restaurantId: String
+})
+
+//restaurantId
+var restaurantSchema = new mongoose.Schema({
+  id: String,
+  name: String,
+  phoneNumber: String,
+  email: String,
+  location: {
+    latitude: String,
+    longitude: String
+  },
+  formattedAddress: String,
+  description: String,
+  priceRange: String,
+})
 
 var paths = {
   sass: ['./scss/**/*.scss']

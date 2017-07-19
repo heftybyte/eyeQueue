@@ -37,9 +37,9 @@ angular.module('starter.controllers', [])
 .controller('SearchController', function($scope ) {})
 
 .controller('SearchFilterController', function($scope, $state, $ionicHistory) {
-  // apply filter
+    // apply filter
   $scope.applyFilter = function() {
-    // put your code hear
+    // put your code here
     // don't show back button in next view
     $ionicHistory.nextViewOptions({
       disableBack: true
