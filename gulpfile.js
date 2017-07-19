@@ -55,28 +55,13 @@ var UserSchema = Schema({
     ref: 'FirstName'
   },
   lastName: {
-    type: Schema.Types.ObectId,
+    type: Schema.Types.ObjectId,
     ref: 'LastName'
   }
 });
 
 //User Model
 var User = new mongoose.model('User', userSchema);
-  id: String,
-  username: String,
-  password: String,
-  paymentMethods: {
-    type: String,
-    card_id: String
-  },
-  phoneNumber: String,
-  email: String,
-  phoneNumberVerified: Boolean,
-  emailVerified: Boolean,
-  picture: String,
-  firstName: String,
-  lastName: String
-});
 
 //Order Schema
 var orderSchema = Schema({
@@ -128,16 +113,7 @@ var mealSchema = Schema({
   },
 })
 //Meal Model
-var mealSchema = new mongoose.Schema({
-  id: String,
-  picture:
-  name: String,
-  description: String,
-  price: Float,
-  prepTime: Int,
-  restaurantId: String
-})
-
+var Meal = mongoose.model('Meal', mealSchema);
 
 //Restaurant Schema
 var restaurantSchema = Schema({
@@ -173,7 +149,7 @@ var restaurantSchema = Schema({
 })
 
 //restaurant model
-var restaurantSchema = new mongoose.Schema({
+var Restaurant = mongoose.model('Restaurant', restaurantSchema);
   id: String,
   name: String,
   phoneNumber: String,
