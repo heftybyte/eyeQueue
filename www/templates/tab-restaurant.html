@@ -1,0 +1,21 @@
+<ion-view view-title="Location" ng-init="init()">
+  <ion-content>
+    <img class="full-image" src="img/r1.jpg">
+    <ion-list>
+      <ion-item ng-repeat="order in orders" class="item-remove-animate item-thumbnail-left item-icon-right" type="item-text-wrap" ng-click="orderReady(order)">
+        <img ng-src="img/r1_thumb.jpg">
+        <h2>Order {{order.orderNumber}}</h2>
+        <p>
+          <i class="ion-person assertive"></i>
+          {{order.user.firstName}} {{order.user.lastName}}
+        </p>
+        <p>
+          <i class="assertive"></i>
+          {{order.meal.name}}
+        </p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-view>

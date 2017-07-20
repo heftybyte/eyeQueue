@@ -4,48 +4,27 @@
       <img class="full-image" src="img/r1.jpg">
       <span class="overlay-rating light">5.0</span>
       <div class="padding">
-        <h2>Sumo BBQ</h2>
+        <h2>{{meal.name}}</h2>
         <p>
-          <i class="ion-ios-location assertive"></i>
-          29 Thái Phiên Quận Hai Bà Trưng.
+          <i class="assertive"></i>
+          {{meal.description}}
         </p>
-      </div>
-    </div>
-    <div class="row static stable-bg">
-      <div class="col">
-        <span class="static-total">154</span>
-        <span class="static-label">Likes</span>
-      </div>
-      <div class="col">
-        <span class="static-total">200</span>
-        <span class="static-label">Comments</span>
-      </div>
-      <div class="col">
-        <span class="static-total">169</span>
-        <span class="static-label">Check in</span>
-      </div>
-      <div class="col">
-        <span class="static-total">210</span>
-        <span class="static-label">Images</span>
       </div>
     </div>
     <div class="list">
       <div class="item stable-bg">
         <i class="icon ion-calendar"></i>
-        07:00AM - 10:00PM
+        Prep Time: {{meal.prepTime}}s
       </div>
       <div class="icon item stable-bg">
         <i class="ion-social-usd"></i>
-        17 - 25
+        {{meal.price}}
       </div>
       <div class="icon item stable-bg">
-        <i class="ion-ios-location"></i>
-        View on map
-      </div>
-      <div class="icon item stable-bg">
-        <i class="ion-chatbox"></i>
-        Information detail
+        <i class="ion-ios-cart"></i>
+        <button ion-button full color="primary" ng-click="order(meal)">Order</button>
       </div>
     </div>
+    <div>Order Number: {{orderNumber}}</div>
   </ion-content>
 </ion-view>

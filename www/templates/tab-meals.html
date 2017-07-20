@@ -1,0 +1,19 @@
+<ion-view view-title="Meals">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="meal in meals" class="item-remove-animate item-thumbnail-left item-icon-right" type="item-text-wrap" ui-sref="detail({meal: meal})">
+        <img ng-src="{{meal.pic}}">
+        <h2>{{meal.name}}</h2>
+        <p>
+          <i class="ion-ios-location assertive"></i>
+          {{meal.description}}
+        </p>
+        <p>
+          <i class="ion-android-favorite"></i> ${{meal.price}}
+          <i class="ion-chatbox"></i> Prep Time: {{meal.prepTime}}
+        </p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

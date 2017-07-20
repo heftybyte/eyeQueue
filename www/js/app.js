@@ -1,7 +1,32 @@
 /* Created at The Knowledge House */
 
-angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services'])
+angular.module(
+  'starter', 
+  ['ionic','ionic.service.core', 'btford.socket-io', 'starter.controllers', 'starter.services']
+)
+.constant('apiUrl', 'http://localhost:3000')
+.factory('socket', function (socketFactory, apiUrl) {
+  var socket = socketFactory({
+    ioSocket: io.connect(apiUrl)
+  });
+  socket.on('orderReady', function(order){
+    alert("order " + order.orderNumber + " is ready to pick up")
+  })
+  return socket;
+}).factory('user', function($http, apiUrl){
+  var user;
 
+  $http.get(apiUrl + '/user')
+    .then(function(response){
+      user = response.data
+    })
+
+  return {
+    getUser: function() {
+      return user;
+    }
+  }
+})
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
 
@@ -61,12 +86,23 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     }
   })
 
-  // search
-  .state('tab.search', {
-    url: '/search',
+   // map view mode
+  .state('tab.restaurant', {
+    url: '/restaurant',
     views: {
-      'tab-search': {
-        templateUrl: 'templates/tab-search.html',
+      'tab-restaurant': {
+        templateUrl: 'templates/tab-restaurant.html',
+        controller: 'Restaurant'
+      }
+    }
+  })
+
+  // search
+  .state('tab.meals', {
+    url: '/meals',
+    views: {
+      'tab-meals': {
+        templateUrl: 'templates/tab-meals.html',
         controller: 'SearchController'
       }
     }
@@ -87,7 +123,11 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
   .state('detail', {
     url: '/detail',
     templateUrl: 'templates/detail.html',
-    controller: 'DetailController'
+    controller: 'DetailController',
+    params: {
+      meal: null
+    },
+    cache: false
   })
 
   // view user account
